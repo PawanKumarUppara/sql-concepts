@@ -1,0 +1,36 @@
+create table person_details(
+  person_id int not null auto_increment,
+  first_name varchar(30) not null,
+  last_name varchar(30) not null,
+  gender varchar(1) not null,
+  occupation varchar(30),
+  primary key (person_id)
+);
+--describe table
+desc person_details;
+
+select * from person_details;
+select * from ssn;
+
+
+insert into person_details(first_name,last_name,gender,occupation)
+VALUES('Pawan','Kumar','M','Developer');
+
+create table ssn(
+
+  ssn_id int not null auto_increment,
+  ssn_number int not null unique,
+  fk_person_id int unique,
+  primary key (ssn_id),
+  FOREIGN KEY (fk_person_id) REFERENCES person_details(person_id)
+);
+
+
+insert into ssn(ssn_number,fk_person_id) values(1234,1);
+
+select * from ssn;
+
+select * from person_details ps left join ssn sn on ps.person_id=sn.fk_person_id where sn.ssn_number is not null;
+
+
+
