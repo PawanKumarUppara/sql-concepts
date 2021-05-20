@@ -1,0 +1,174 @@
+--CREATE A DATABASE a drive
+
+create database web_learning;
+
+
+--mention what database being Used
+use web_learning;
+
+--create a TABLE
+create table student(
+
+    first_name  VARCHAR(50),
+    last_name  VARCHAR(50)
+)
+
+--HOW MANY TABLES IN DATABASE
+show tables;
+
+--skeltpon of DATABASE
+
+desc student;
+
+
+
+--insert content into DATABASE
+
+insert into student(first_name,last_name) VALUES('Pawan','Uppara');
+
+
+insert into student(first_name,last_name) VALUES('harry','potter');
+select * from student;
+
+--autoincrement sayng to database to generte values
+
+--primary key is an idnetifier
+
+--link:https://www.w3schools.com/sql/sql_autoincrement.asp
+
+CREATE TABLE Persons (
+    Personid int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (Personid),
+     FOREIGN KEY (fk_person_id) REFERENCES person_details(person_id)
+);
+
+
+--drop table
+drop table Persons;
+--sold to farmville
+--meetup sign up google
+
+--business to any so
+
+
+desc Persons;
+
+insert into Persons(LastName,FirstName) VALUES('Pawan','Uppara');
+insert into Persons(LastName,FirstName,Age) VALUES('Super','Man',26);
+insert into Persons(LastName,FirstName,Age) VALUES('Super','Women',26);
+
+insert into Persons(LastName,FirstName) VALUES('Mathew','Uppara');
+
+insert into Persons(LastName,FirstName,Age) VALUES('Super','Power',26);
+
+
+select * from Persons;
+select * from Persons where LastName='Super' or FirstName='Man';
+
+
+select * from Persons where Age is null;
+
+--youtube
+
+--modify any sort of table use alter command
+--https://www.w3schools.com/sql/sql_alter.asp
+
+ALTER TABLE Persons
+ADD Email varchar(255);
+
+
+ALTER TABLE Persons
+ADD address varchar(255);
+
+desc Persons;
+use web_learning;
+select * from Persons;
+
+
+
+
+--updating email
+
+update Persons
+set Email='pawan.1234@gmail.com'
+where Personid=1;
+
+
+update Persons
+set address="1234 hamburger lane"
+where Personid=7;
+
+
+--colu
+
+--2s
+
+--1000-20s
+
+--foreigbn key relationship
+
+
+
+CREATE TABLE uber_app (
+    Uberid int NOT NULL AUTO_INCREMENT,
+    uberpass varchar(255) NOT NULL,
+
+  
+    PRIMARY KEY (Uberid )
+);
+
+
+insert into uber_app( uberpass) VALUES('free_pass');
+desc uber_app;
+
+alter table Persons
+ADD FOREIGN KEY (Uberid ) REFERENCES uber_app(Uberid);
+
+
+ALTER TABLE Persons
+ADD FOREIGN KEY (Uberid) REFERENCES uber_app(Uberid);
+
+
+use web_learning;
+CREATE TABLE uber_app (
+    Uberid int NOT NULL AUTO_INCREMENT,
+    uberpass varchar(255) NOT NULL,
+
+  
+    PRIMARY KEY (Uberid )
+);
+
+
+show tables;
+
+desc uber_app;
+drop table Persons;
+drop table uber_app;
+desc uber_app;
+
+
+use web_learning;
+CREATE TABLE Persons (
+    Personid int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    uber_id int,
+    Age int,
+    PRIMARY KEY (Personid),
+     FOREIGN KEY ( uber_id ) REFERENCES uber_app(Uberid)
+);
+
+select * from uber_app;
+
+select * from Persons;
+
+insert into uber_app(uberpass) value ('20% discount');
+
+insert into Persons(LastName,FirstName,uber_id) VALUES('Pawan','Uppara',1);
+
+--joins
+
+select * from Persons pr right join uber_app ua on pr.uber_id=ua.Uberid;
